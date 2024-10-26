@@ -32,7 +32,7 @@ if input_data:
     st.dataframe(df)
     
     # Show the prediction result with larger red font
-    st.write(f"<h1 style='color:red;'>{next_value:.2f}</h1>", unsafe_allow_html=True)
+    st.write(f"ตัวเลขตัวถัดไปที่น่าจะเป็น คือ <h1 style='color:red;'>{next_value:.2f}</h1>", unsafe_allow_html=True)
 
     # Plot the data using Streamlit's built-in chart
     st.line_chart(input_numbers + [next_value])  # Include predicted value
