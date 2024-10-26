@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 # Function to predict the next value
@@ -29,22 +28,11 @@ if input_data:
     next_value = predict_next_value(input_numbers)
     
     # Show the input data as a table
-    #st.subheader("Input Data")
-    #st.dataframe(df)
+    st.subheader("Input Data")
+    st.dataframe(df)
     
     # Show the prediction result
     st.write(f"Predicted next value: {next_value:.2f}")
 
-    # Plot the data and the predicted next value
-    plt.figure(figsize=(10, 5))
-    plt.plot(range(len(input_numbers)), input_numbers, marker='o', label='Input Numbers', color='blue')
-    plt.axhline(y=next_value, color='red', linestyle='--', label='Predicted Next Value')
-    plt.scatter(len(input_numbers), next_value, color='red', s=100)  # Mark predicted point
-    plt.title("Number Prediction")
-    plt.xlabel("Index")
-    plt.ylabel("Value")
-    plt.xticks(range(len(input_numbers) + 1))  # Update x-ticks to include the predicted point
-    plt.legend()
-    st.pyplot(plt)
-
-
+    # Plot the data using Streamlit's built-in chart
+    st.line_chart(input_numbers + [next_value])  # Include predicted value
